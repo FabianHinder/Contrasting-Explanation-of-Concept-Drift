@@ -6,8 +6,12 @@ from sklearn.cluster import MiniBatchKMeans
 from sklearn.metrics.pairwise import euclidean_distances as dist
 from scipy.optimize import linear_sum_assignment as assign
 from utility import find_closest_sample
-from ceml.sklearn import generate_counterfactual
 
+try:
+    from ceml.sklearn import generate_counterfactual
+except:
+    pass
+    
 
 def select_samples(X,y,n_samples=10,k=10,p_thr=0.05, select_from_samples=False):
     model = RandomForestClassifier(criterion='gini',min_samples_leaf=k+1)

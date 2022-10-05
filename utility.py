@@ -1,8 +1,12 @@
 import numpy as np
-import matplotlib.pyplot as plt
 from sklearn.metrics.pairwise import euclidean_distances as dist
 from scipy.optimize import minimize
-from umap import UMAP
+import matplotlib.pyplot as plt
+
+try:
+    from umap import UMAP
+except:
+    pass
 
 try:
     import jax.numpy as npx
