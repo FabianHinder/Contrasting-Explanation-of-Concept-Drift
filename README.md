@@ -1,12 +1,15 @@
 # Contrasting Explanation of Concept Drift [1] #
 
-This reposetory contains an reference implementation of drift explanation toolkit described in "Contrasting Explanation of Concept Drift" [1] as well as several examples (see [examples.ipynb]). 
+This repository contains a reference implementation of the drift explanation toolkit described in "Contrasting Explanation of Concept Drift" [1], as well as several examples (see [examples.ipynb]). 
 
 ## Description / Abstract ##
 The notion of concept drift refers to the phenomenon that the distribution, which is underlying the observed data, changes over time. As a consequence machine learning models may become inaccurate and need adjustment. While there do exist methods to detect concept drift or to adjust models in the presence of observed drift, the question of _explaining_ drift is still widely unsolved. This problem is of importance, since it enables an understanding of the most prominent drift characteristics. In this work we propose to explain concept drift by means of contrasting explanations describing characteristic changes of spatial features. We demonstrate the usefulness of the explanation in several examples.
 
 ## How to use ##
-The explaining routine is started when drift is detected and explanations are required. To perform the explanation take a time window containing samples from before and after (`X`) the detected drift and anotate each sample wether it was observed before (`y[i] = 0`) or after (`y[i] = 1`) the drift. Then apply the `select_samples(X,y)` method to perform a drift localization and obtain the characteristic samples. Then train a (simple) model to learn the drift structure, e.g., by using the `simple_model` method, and use it and the characteristic samples to compute the explanation, e.g., by using the `compute_counterfactual_explanation` method.
+The explanation routine is started upon detection of a drift and explanations are required. For the explanation, choose a time window (`X`) containing samples before and after the detected drift, 
+and each sample is annotated with whether it was observed before (`y[i] = 0`) or after (`y[i] = 1`) the drift. Then apply the `select_samples(X,y)` method to perform drift localization and obtain 
+the characteristic samples. Next, train a (simple) model to learn the drift structure, e.g., using the method `simple_model`, and use it and the characteristic samples to compute the explanation, 
+e.g., using the method `compute_counterfactual_explanation`.
 
 ## Examples ##
 ```python
@@ -41,7 +44,8 @@ plt.show()
 show_sample(samps,cfs)
 plt.show()
 ```
-Further examples can be found in [examples.ipynb]
+
+More examples can be found in [examples.ipynb].
 
 ## Dependencies ##
 Primary:
@@ -63,4 +67,5 @@ TODO
 
 ## References
 
-1. F. Hinder, A. Artelt, V. Vaquet, B. Hammer and M. Verleysen. ["Contrasting Explanation of Concept Drift."](https://www.esann.org/proceedings/2022) ESANN. 2022.
+1. F. Hinder, A. Artelt, V. Vaquet, B. Hammer and M. Verleysen. ["Contrasting Explanation of Concept Drift."](https://www.esann.org/sites/default/files/proceedings/2022/ES2022-71.pdf) ESANN. 2022.
+
